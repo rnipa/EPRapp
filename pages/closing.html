@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closing Balance</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+text-decoration:none;
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+margin-top:15px;
+}
+
+label{
+display:block;
+margin-bottom:5px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+}
+
+.summary{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+}
+
+.box{
+background:rgba(255,255,255,.08);
+padding:15px;
+border-radius:15px;
+text-align:center;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#22c55e;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>🌙 Closing Balance</h2>
+</div>
+
+<div class="card">
+
+<div class="grid">
+
+<div>
+<label>Bkash</label>
+<input id="cbk">
+</div>
+
+<div>
+<label>Nagad</label>
+<input id="cng">
+</div>
+
+<div>
+<label>Rocket</label>
+<input id="crk">
+</div>
+
+<div>
+<label>MFS Cash</label>
+<input id="cmc">
+</div>
+
+<div>
+<label>GP</label>
+<input id="cgp">
+</div>
+
+<div>
+<label>Robi</label>
+<input id="crobi">
+</div>
+
+<div>
+<label>Airtel</label>
+<input id="cair">
+</div>
+
+<div>
+<label>Banglalink</label>
+<input id="cbl">
+</div>
+
+<div>
+<label>Tally Khata</label>
+<input id="ctk">
+</div>
+
+<div>
+<label>Recharge Cash</label>
+<input id="crc">
+</div>
+
+</div>
+
+<div class="summary">
+
+<div class="box">
+<h3>💰 Closing E-Money</h3>
+<h2 id="closingEmoney">0 ৳</h2>
+</div>
+
+<div class="box">
+<h3>💵 Closing Cash</h3>
+<h2 id="closingCash">0 ৳</h2>
+</div>
+
+</div>
+
+<button onclick="saveClosing()">
+💾 Save Closing Balance
+</button>
+
+</div>
+
+<script>
+
+function saveClosing(){
+
+const data={
+
+cbk:cbk.value,
+cng:cng.value,
+crk:crk.value,
+cmc:cmc.value,
+
+cgp:cgp.value,
+crobi:crobi.value,
+cair:cair.value,
+cbl:cbl.value,
+ctk:ctk.value,
+crc:crc.value
+
+};
+
+localStorage.setItem(
+'closingBalance',
+JSON.stringify(data)
+);
+
+alert('✅ Closing Balance Saved');
+
+}
+
+</script>
+
+</body>
+</html>
