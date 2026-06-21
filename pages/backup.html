@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backup Center</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+text-decoration:none;
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+color:white;
+}
+
+.cloud{background:#2563eb;}
+.restore{background:#f59e0b;}
+.export{background:#16a34a;}
+.importBtn{background:#7c3aed;}
+
+.status{
+line-height:30px;
+font-size:16px;
+}
+
+input[type=file]{
+display:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>☁️ Backup Center</h2>
+</div>
+
+<div class="card">
+
+<button class="cloud" onclick="cloudBackup()">
+☁️ Cloud Backup
+</button>
+
+<button class="restore" onclick="cloudRestore()">
+🔄 Cloud Restore
+</button>
+
+<button class="export" onclick="exportBackup()">
+📦 Export Backup
+</button>
+
+<label>
+<button class="importBtn">
+📥 Import Backup
+</button>
+<input type="file" id="importFile">
+</label>
+
+</div>
+
+<div class="card">
+
+<h3>🛡️ Backup Status</h3>
+
+<div class="status">
+
+<p id="cloudStatus">
+☁️ Cloud Status : Connected
+</p>
+
+<p id="lastExport">
+📦 Last Export : Never
+</p>
+
+<p id="lastRestore">
+🔄 Last Restore : Never
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+function cloudBackup(){
+
+alert('☁️ Cloud Backup System পরে Connect করা হবে');
+
+}
+
+function cloudRestore(){
+
+alert('🔄 Cloud Restore System পরে Connect করা হবে');
+
+}
+
+function exportBackup(){
+
+alert('📦 Export System পরে Connect করা হবে');
+
+}
+
+document.getElementById('importFile')
+.addEventListener('change',()=>{
+
+alert('📥 Import System পরে Connect করা হবে');
+
+});
+
+</script>
+
+</body>
+</html>
