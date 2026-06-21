@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profit Calculator</title>
+<title>Cash Note Calculator</title>
 
 <style>
 *{
@@ -30,9 +30,9 @@ margin-bottom:20px;
 .back-btn{
 background:#2563eb;
 color:white;
-text-decoration:none;
 padding:10px 15px;
 border-radius:10px;
+text-decoration:none;
 }
 
 .card{
@@ -40,44 +40,61 @@ background:rgba(255,255,255,.08);
 padding:20px;
 border-radius:20px;
 backdrop-filter:blur(10px);
-margin-bottom:15px;
+max-width:800px;
+margin:auto;
 }
 
-.grid{
+.row{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+grid-template-columns:120px 1fr 120px;
+gap:10px;
+align-items:center;
+margin-bottom:10px;
 }
 
-.box{
-background:rgba(255,255,255,.08);
-padding:15px;
-border-radius:15px;
-text-align:center;
-}
-
-button{
-width:100%;
-padding:15px;
+input{
+padding:12px;
 border:none;
-border-radius:12px;
-background:#22c55e;
-color:white;
+border-radius:10px;
 font-size:16px;
-font-weight:bold;
-cursor:pointer;
-margin-top:15px;
+width:100%;
 }
 
-.result{
+.noteTotal{
+text-align:right;
+font-weight:bold;
+}
+
+.totalBox{
 margin-top:20px;
 padding:20px;
 border-radius:15px;
-background:rgba(255,255,255,.08);
+background:#16a34a;
 text-align:center;
-font-size:20px;
+font-size:28px;
 font-weight:bold;
 }
+
+.btns{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+button{
+padding:14px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+color:white;
+}
+
+.opening{background:#2563eb;}
+.closing{background:#ea580c;}
+.mfs{background:#7c3aed;}
+.recharge{background:#0891b2;}
 </style>
 
 </head>
@@ -85,101 +102,146 @@ font-weight:bold;
 
 <div class="header">
 <a href="../index.html" class="back-btn">🏠 Dashboard</a>
-<h2>🧮 Profit Calculator</h2>
+<h2>💵 Cash Note Calculator</h2>
 </div>
 
 <div class="card">
 
-<div class="grid">
-
-<div class="box">
-<h3>🌅 Opening MFS</h3>
-<h2 id="openMFS">0 ৳</h2>
+<div class="row">
+<div>৳1000</div>
+<input type="number" id="n1000" value="0" oninput="calc()">
+<div class="noteTotal" id="t1000">0</div>
 </div>
 
-<div class="box">
-<h3>🌙 Closing MFS</h3>
-<h2 id="closeMFS">0 ৳</h2>
+<div class="row">
+<div>৳500</div>
+<input type="number" id="n500" value="0" oninput="calc()">
+<div class="noteTotal" id="t500">0</div>
 </div>
 
-<div class="box">
-<h3>🌅 Opening Recharge</h3>
-<h2 id="openRecharge">0 ৳</h2>
+<div class="row">
+<div>৳200</div>
+<input type="number" id="n200" value="0" oninput="calc()">
+<div class="noteTotal" id="t200">0</div>
 </div>
 
-<div class="box">
-<h3>🌙 Closing Recharge</h3>
-<h2 id="closeRecharge">0 ৳</h2>
+<div class="row">
+<div>৳100</div>
+<input type="number" id="n100" value="0" oninput="calc()">
+<div class="noteTotal" id="t100">0</div>
 </div>
 
+<div class="row">
+<div>৳50</div>
+<input type="number" id="n50" value="0" oninput="calc()">
+<div class="noteTotal" id="t50">0</div>
 </div>
 
-<button onclick="calculateProfit()">
-📈 Calculate Profit
+<div class="row">
+<div>৳20</div>
+<input type="number" id="n20" value="0" oninput="calc()">
+<div class="noteTotal" id="t20">0</div>
+</div>
+
+<div class="row">
+<div>৳10</div>
+<input type="number" id="n10" value="0" oninput="calc()">
+<div class="noteTotal" id="t10">0</div>
+</div>
+
+<div class="row">
+<div>৳5</div>
+<input type="number" id="n5" value="0" oninput="calc()">
+<div class="noteTotal" id="t5">0</div>
+</div>
+
+<div class="totalBox">
+💰 Total Cash: <span id="grandTotal">0</span> ৳
+</div>
+
+<div class="btns">
+
+<button class="opening" onclick="applyOpeningCash()">
+🌅 Apply To Opening Cash
 </button>
 
-<div class="result" id="resultBox">
-Profit Not Calculated Yet
+<button class="closing" onclick="applyClosingCash()">
+🌙 Apply To Closing Cash
+</button>
+
+<button class="mfs" onclick="applyOpeningMFS()">
+💳 Apply To Opening MFS
+</button>
+
+<button class="mfs" onclick="applyClosingMFS()">
+💳 Apply To Closing MFS
+</button>
+
+<button class="recharge" onclick="applyOpeningRecharge()">
+📱 Apply To Opening Recharge
+</button>
+
+<button class="recharge" onclick="applyClosingRecharge()">
+📱 Apply To Closing Recharge
+</button>
+
 </div>
 
 </div>
 
 <script>
 
-function calculateProfit(){
+let totalCash=0;
 
-let opening=JSON.parse(
-localStorage.getItem('openingBalance')||'{}'
-);
+function calc(){
 
-let closing=JSON.parse(
-localStorage.getItem('closingBalance')||'{}'
-);
+const notes=[1000,500,200,100,50,20,10,5];
+totalCash=0;
 
-let openMFS=
-(+opening.obk||0)+
-(+opening.ong||0)+
-(+opening.ork||0)+
-(+opening.omc||0);
+notes.forEach(v=>{
 
-let closeMFS=
-(+closing.cbk||0)+
-(+closing.cng||0)+
-(+closing.crk||0)+
-(+closing.cmc||0);
+let qty=Number(document.getElementById('n'+v).value)||0;
+let subtotal=qty*v;
 
-let openRecharge=
-(+opening.ogp||0)+
-(+opening.orobi||0)+
-(+opening.oair||0)+
-(+opening.obl||0)+
-(+opening.otk||0)+
-(+opening.orc||0);
+document.getElementById('t'+v).innerHTML=
+subtotal.toLocaleString();
 
-let closeRecharge=
-(+closing.cgp||0)+
-(+closing.crobi||0)+
-(+closing.cair||0)+
-(+closing.cbl||0)+
-(+closing.ctk||0)+
-(+closing.crc||0);
+totalCash+=subtotal;
 
-let mfsProfit=closeMFS-openMFS;
-let rechargeProfit=closeRecharge-openRecharge;
-let totalProfit=mfsProfit+rechargeProfit;
+});
 
-document.getElementById('openMFS').innerHTML=openMFS+' ৳';
-document.getElementById('closeMFS').innerHTML=closeMFS+' ৳';
-
-document.getElementById('openRecharge').innerHTML=openRecharge+' ৳';
-document.getElementById('closeRecharge').innerHTML=closeRecharge+' ৳';
-
-document.getElementById('resultBox').innerHTML=
-'💸 MFS Profit: '+mfsProfit+' ৳<br><br>'+
-'📱 Recharge Profit: '+rechargeProfit+' ৳<br><br>'+
-'💰 Total Profit: '+totalProfit+' ৳';
+document.getElementById('grandTotal').innerHTML=
+totalCash.toLocaleString();
 
 }
+
+function applyOpeningCash(){
+localStorage.setItem('cashCalcValue',totalCash);
+alert('✅ Opening Cash Apply Ready');
+}
+
+function applyClosingCash(){
+localStorage.setItem('cashCalcValue',totalCash);
+alert('✅ Closing Cash Apply Ready');
+}
+
+function applyOpeningMFS(){
+alert('✅ Opening MFS Apply Ready');
+}
+
+function applyClosingMFS(){
+alert('✅ Closing MFS Apply Ready');
+}
+
+function applyOpeningRecharge(){
+alert('✅ Opening Recharge Apply Ready');
+}
+
+function applyClosingRecharge(){
+alert('✅ Closing Recharge Apply Ready');
+}
+
+calc();
 
 </script>
 
