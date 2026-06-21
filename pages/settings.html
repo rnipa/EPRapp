@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#16a34a;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>⚙️ Settings</h2>
+</div>
+
+<div class="card">
+
+<h3>👤 Owner Information</h3>
+
+<input type="text" placeholder="Owner Name">
+
+<input type="text" placeholder="Mobile Number">
+
+</div>
+
+<div class="card">
+
+<h3>🏪 Business Information</h3>
+
+<input type="text" placeholder="Business Name">
+
+<input type="text" placeholder="Business Address">
+
+</div>
+
+<div class="card">
+
+<h3>🎨 Theme Settings</h3>
+
+<select>
+<option>Dark Theme</option>
+<option>Light Theme</option>
+</select>
+
+</div>
+
+<div class="card">
+
+<h3>📱 WhatsApp Settings</h3>
+
+<input type="text" placeholder="Default WhatsApp Number">
+
+</div>
+
+<div class="card">
+
+<h3>☁️ Firebase Settings</h3>
+
+<input type="text" placeholder="Firebase Project ID">
+
+</div>
+
+<div class="card">
+
+<h3>💾 Data Settings</h3>
+
+<button>📦 Export Data</button>
+
+<button>📥 Import Data</button>
+
+<button style="background:#dc2626;">
+🗑️ Clear All Data
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>ℹ️ App Information</h3>
+
+<p>Rubaiya Pharmacy ERP</p>
+<p>Version 2.0</p>
+
+</div>
+
+<button>
+💾 Save Settings
+</button>
+
+</body>
+</html>
