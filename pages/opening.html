@@ -179,28 +179,87 @@ function saveOpening(){
 
 const data={
 
-obk:obk.value,
-ong:ong.value,
-ork:ork.value,
-omc:omc.value,
+obk: document.getElementById('obk').value,
+ong: document.getElementById('ong').value,
+ork: document.getElementById('ork').value,
+omc: document.getElementById('omc').value,
 
-ogp:ogp.value,
-orobi:orobi.value,
-oair:oair.value,
-obl:obl.value,
-otk:otk.value,
-orc:orc.value
+ogp: document.getElementById('ogp').value,
+orobi: document.getElementById('orobi').value,
+oair: document.getElementById('oair').value,
+obl: document.getElementById('obl').value,
+otk: document.getElementById('otk').value,
+orc: document.getElementById('orc').value
 
 };
 
-localStorage.setItem(
-'openingBalance',
-JSON.stringify(data)
-);
+saveData('openingBalance',data);
+
+updateBalanceCards();
 
 alert('✅ Opening Balance Saved');
 
 }
+
+function loadOpening(){
+
+const data=loadData('openingBalance',{});
+
+Object.keys(data).forEach(key=>{
+
+const el=document.getElementById(key);
+
+if(el){
+el.value=data[key];
+}
+
+});
+
+updateBalanceCards();
+
+}
+
+function updateOpeningSummary(){
+
+let emoney=
+(Number(obk.value)||0)+
+(Number(ong.value)||0)+
+(Number(ork.value)||0)+
+(Number(ogp.value)||0)+
+(Number(orobi.value)||0)+
+(Number(oair.value)||0)+
+(Number(obl.value)||0)+
+(Number(otk.value)||0);
+
+let cash=
+(Number(omc.value)||0)+
+(Number(orc.value)||0);
+
+document.getElementById('openingEmoney').innerHTML=
+emoney.toLocaleString()+' ৳';
+
+document.getElementById('openingCash').innerHTML=
+cash.toLocaleString()+' ৳';
+
+}
+
+document.querySelectorAll('input').forEach(el=>{
+
+el.addEventListener('input',()=>{
+
+updateOpeningSummary();
+
+});
+
+});
+
+window.addEventListener('load',()=>{
+
+loadOpening();
+
+updateOpeningSummary();
+
+});
 
 </script>
 <script src="../assets/js/core.js"></script>
