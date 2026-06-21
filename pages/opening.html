@@ -196,15 +196,24 @@ orc: orc.value
 
 };
 
-saveData('openingBalance', data);
+localStorage.setItem(
+'openingBalance',
+JSON.stringify(data)
+);
 
-alert('✅ Opening Balance Saved');
+const goDashboard = confirm(
+'✅ Opening Balance সফলভাবে Save হয়েছে!\n\nDashboard এ যেতে চান?'
+);
 
+if(goDashboard){
+window.location.href = '../index.html';
 }
 
 function loadOpening(){
 
-const data = loadData('openingBalance', {});
+const data = JSON.parse(
+localStorage.getItem('openingBalance') || '{}'
+);
 
 for(const key in data){
 
