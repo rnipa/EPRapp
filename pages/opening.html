@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -103,52 +104,52 @@ cursor:pointer;
 
 <div>
 <label>Bkash</label>
-<input id="obk">
+<input type="number" id="obk" value="0">
 </div>
 
 <div>
 <label>Nagad</label>
-<input id="ong">
+<input type="number" id="ong" value="0">
 </div>
 
 <div>
 <label>Rocket</label>
-<input id="ork">
+<input type="number" id="ork" value="0">
 </div>
 
 <div>
 <label>MFS Cash</label>
-<input id="omc">
+<input type="number" id="omc" value="0">
 </div>
 
 <div>
 <label>GP</label>
-<input id="ogp">
+<input type="number" id="ogp" value="0">
 </div>
 
 <div>
 <label>Robi</label>
-<input id="orobi">
+<input type="number" id="orobi" value="0">
 </div>
 
 <div>
 <label>Airtel</label>
-<input id="oair">
+<input type="number" id="oair" value="0">
 </div>
 
 <div>
 <label>Banglalink</label>
-<input id="obl">
+<input type="number" id="obl" value="0">
 </div>
 
 <div>
 <label>Tally Khata</label>
-<input id="otk">
+<input type="number" id="otk" value="0">
 </div>
 
 <div>
 <label>Recharge Cash</label>
-<input id="orc">
+<input type="number" id="orc" value="0">
 </div>
 
 </div>
@@ -173,29 +174,29 @@ cursor:pointer;
 
 </div>
 
+<script src="../assets/js/core.js"></script>
+
 <script>
 
 function saveOpening(){
 
-const data={
+const data = {
 
-obk: document.getElementById('obk').value,
-ong: document.getElementById('ong').value,
-ork: document.getElementById('ork').value,
-omc: document.getElementById('omc').value,
+obk: obk.value,
+ong: ong.value,
+ork: ork.value,
+omc: omc.value,
 
-ogp: document.getElementById('ogp').value,
-orobi: document.getElementById('orobi').value,
-oair: document.getElementById('oair').value,
-obl: document.getElementById('obl').value,
-otk: document.getElementById('otk').value,
-orc: document.getElementById('orc').value
+ogp: ogp.value,
+orobi: orobi.value,
+oair: oair.value,
+obl: obl.value,
+otk: otk.value,
+orc: orc.value
 
 };
 
-saveData('openingBalance',data);
-
-updateBalanceCards();
+saveData('openingBalance', data);
 
 alert('✅ Opening Balance Saved');
 
@@ -203,25 +204,26 @@ alert('✅ Opening Balance Saved');
 
 function loadOpening(){
 
-const data=loadData('openingBalance',{});
+const data = loadData('openingBalance', {});
 
-Object.keys(data).forEach(key=>{
+for(const key in data){
 
-const el=document.getElementById(key);
+const el = document.getElementById(key);
 
 if(el){
-el.value=data[key];
+el.value = data[key];
 }
 
-});
+}
 
-updateBalanceCards();
+updateOpeningSummary();
 
 }
 
 function updateOpeningSummary(){
 
-let emoney=
+const emoney =
+
 (Number(obk.value)||0)+
 (Number(ong.value)||0)+
 (Number(ork.value)||0)+
@@ -231,37 +233,32 @@ let emoney=
 (Number(obl.value)||0)+
 (Number(otk.value)||0);
 
-let cash=
+const cash =
+
 (Number(omc.value)||0)+
 (Number(orc.value)||0);
 
-document.getElementById('openingEmoney').innerHTML=
-emoney.toLocaleString()+' ৳';
+document.getElementById('openingEmoney').innerHTML =
+emoney.toLocaleString() + ' ৳';
 
-document.getElementById('openingCash').innerHTML=
-cash.toLocaleString()+' ৳';
+document.getElementById('openingCash').innerHTML =
+cash.toLocaleString() + ' ৳';
 
 }
 
-document.querySelectorAll('input').forEach(el=>{
+document.querySelectorAll('input').forEach(input=>{
 
-el.addEventListener('input',()=>{
-
-updateOpeningSummary();
+input.addEventListener('input', updateOpeningSummary);
 
 });
 
-});
-
-window.addEventListener('load',()=>{
+window.onload = function(){
 
 loadOpening();
 
-updateOpeningSummary();
-
-});
+};
 
 </script>
-<script src="../assets/js/core.js"></script>
+
 </body>
 </html>
