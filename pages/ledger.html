@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Fund Ledger</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.summary{
+text-align:center;
+}
+
+.summary .amount{
+font-size:26px;
+font-weight:bold;
+margin-top:10px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+margin-top:12px;
+color:white;
+}
+
+.save-btn{
+background:#16a34a;
+}
+
+.whatsapp-btn{
+background:#22c55e;
+}
+
+.list-item{
+background:rgba(255,255,255,.05);
+padding:12px;
+border-radius:12px;
+margin-top:10px;
+}
+
+.status{
+font-size:13px;
+margin-top:5px;
+opacity:.8;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>👥 Smart Fund Ledger</h2>
+</div>
+
+<div class="grid">
+
+<div class="card summary">
+<h3>📥 Total Receivable</h3>
+<div class="amount">৳0</div>
+</div>
+
+<div class="card summary">
+<h3>📤 Total Payable</h3>
+<div class="amount">৳0</div>
+</div>
+
+<div class="card summary">
+<h3>👥 Due Clients</h3>
+<div class="amount">0</div>
+</div>
+
+<div class="card summary">
+<h3>⚠️ High Risk</h3>
+<div class="amount">0</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>➕ Add Client</h3>
+
+<input type="text" placeholder="Client Name">
+
+<input type="text" placeholder="Mobile Number">
+
+<button class="save-btn">
+💾 Save Client
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>💰 New Transaction</h3>
+
+<select>
+<option>📥 Money Received</option>
+<option>📤 Money Given</option>
+<option>💚 Refund Received</option>
+<option>🧾 Refund Given</option>
+</select>
+
+<input type="number" placeholder="Amount">
+
+<input type="text" placeholder="Note">
+
+<button class="save-btn">
+💾 Save Transaction
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🔔 Due Reminder</h3>
+
+<button class="whatsapp-btn">
+📱 Send WhatsApp Reminder
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>🏆 Top Due Clients</h3>
+
+<div class="list-item">
+👤 Client Name
+<br>
+💰 ৳0
+</div>
+
+<div class="list-item">
+👤 Client Name
+<br>
+💰 ৳0
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>📜 Transaction History</h3>
+
+<div class="list-item">
+📥 Received ৳0
+<div class="status">
+Today
+</div>
+</div>
+
+<div class="list-item">
+📤 Given ৳0
+<div class="status">
+Today
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
