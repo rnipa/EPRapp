@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profit Calculator</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+background:#2563eb;
+color:white;
+text-decoration:none;
+padding:10px 15px;
+border-radius:10px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.box{
+background:rgba(255,255,255,.08);
+padding:15px;
+border-radius:15px;
+text-align:center;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#22c55e;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:15px;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+border-radius:15px;
+background:rgba(255,255,255,.08);
+text-align:center;
+font-size:20px;
+font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>🧮 Profit Calculator</h2>
+</div>
+
+<div class="card">
+
+<div class="grid">
+
+<div class="box">
+<h3>🌅 Opening MFS</h3>
+<h2 id="openMFS">0 ৳</h2>
+</div>
+
+<div class="box">
+<h3>🌙 Closing MFS</h3>
+<h2 id="closeMFS">0 ৳</h2>
+</div>
+
+<div class="box">
+<h3>🌅 Opening Recharge</h3>
+<h2 id="openRecharge">0 ৳</h2>
+</div>
+
+<div class="box">
+<h3>🌙 Closing Recharge</h3>
+<h2 id="closeRecharge">0 ৳</h2>
+</div>
+
+</div>
+
+<button onclick="calculateProfit()">
+📈 Calculate Profit
+</button>
+
+<div class="result" id="resultBox">
+Profit Not Calculated Yet
+</div>
+
+</div>
+
+<script>
+
+function calculateProfit(){
+
+let opening=JSON.parse(
+localStorage.getItem('openingBalance')||'{}'
+);
+
+let closing=JSON.parse(
+localStorage.getItem('closingBalance')||'{}'
+);
+
+let openMFS=
+(+opening.obk||0)+
+(+opening.ong||0)+
+(+opening.ork||0)+
+(+opening.omc||0);
+
+let closeMFS=
+(+closing.cbk||0)+
+(+closing.cng||0)+
+(+closing.crk||0)+
+(+closing.cmc||0);
+
+let openRecharge=
+(+opening.ogp||0)+
+(+opening.orobi||0)+
+(+opening.oair||0)+
+(+opening.obl||0)+
+(+opening.otk||0)+
+(+opening.orc||0);
+
+let closeRecharge=
+(+closing.cgp||0)+
+(+closing.crobi||0)+
+(+closing.cair||0)+
+(+closing.cbl||0)+
+(+closing.ctk||0)+
+(+closing.crc||0);
+
+let mfsProfit=closeMFS-openMFS;
+let rechargeProfit=closeRecharge-openRecharge;
+let totalProfit=mfsProfit+rechargeProfit;
+
+document.getElementById('openMFS').innerHTML=openMFS+' ৳';
+document.getElementById('closeMFS').innerHTML=closeMFS+' ৳';
+
+document.getElementById('openRecharge').innerHTML=openRecharge+' ৳';
+document.getElementById('closeRecharge').innerHTML=closeRecharge+' ৳';
+
+document.getElementById('resultBox').innerHTML=
+'💸 MFS Profit: '+mfsProfit+' ৳<br><br>'+
+'📱 Recharge Profit: '+rechargeProfit+' ৳<br><br>'+
+'💰 Total Profit: '+totalProfit+' ৳';
+
+}
+
+</script>
+
+</body>
+</html>
