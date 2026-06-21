@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Withdrawal</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+margin-bottom:15px;
+}
+
+label{
+display:block;
+margin-bottom:5px;
+font-weight:bold;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#dc2626;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.history{
+margin-top:20px;
+}
+
+.item{
+background:rgba(255,255,255,.05);
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>💸 Owner Withdrawal</h2>
+</div>
+
+<div class="card">
+
+<label>💰 Withdrawal Amount</label> <input type="number" placeholder="Amount">
+
+<label>📝 Purpose / Note</label>
+
+<textarea rows="4" placeholder="Reason for withdrawal"></textarea>
+
+<label>📅 Date</label> <input type="date">
+
+<button>
+💾 Save Withdrawal
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>📜 Recent Withdrawals</h3>
+
+<div class="history">
+
+<div class="item">
+💸 ৳5,000
+<br>
+📝 Personal Expense
+</div>
+
+<div class="item">
+💸 ৳2,000
+<br>
+📝 Emergency Need
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
