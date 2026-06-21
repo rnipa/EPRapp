@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Manager</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.header{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.back-btn{
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.summary{
+text-align:center;
+}
+
+.summary h3{
+margin-bottom:10px;
+}
+
+.summary .amount{
+font-size:28px;
+font-weight:bold;
+}
+
+label{
+display:block;
+margin-bottom:5px;
+margin-top:10px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#16a34a;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:15px;
+}
+
+.history-item{
+background:rgba(255,255,255,.05);
+padding:12px;
+border-radius:12px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a href="../index.html" class="back-btn">🏠 Dashboard</a>
+<h2>💎 Capital Manager</h2>
+</div>
+
+<div class="grid">
+
+<div class="card summary">
+<h3>💎 Base Capital</h3>
+<div class="amount">৳0</div>
+</div>
+
+<div class="card summary">
+<h3>📈 Reinvested Profit</h3>
+<div class="amount">৳0</div>
+</div>
+
+<div class="card summary">
+<h3>💸 Total Withdrawal</h3>
+<div class="amount">৳0</div>
+</div>
+
+<div class="card summary">
+<h3>⚖️ Current Capital</h3>
+<div class="amount">৳0</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>➕ Add Capital Transaction</h3>
+
+<label>Transaction Type</label>
+
+<select>
+<option>Base Capital</option>
+<option>Reinvest Profit</option>
+<option>Owner Withdrawal</option>
+</select>
+
+<label>Amount</label>
+
+<input type="number" placeholder="Enter Amount">
+
+<label>Note</label>
+
+<input type="text" placeholder="Description">
+
+<button>
+💾 Save Capital Entry
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>📜 Capital History</h3>
+
+<div class="history-item">
+💎 Base Capital Added
+<br>
+💰 ৳0
+</div>
+
+<div class="history-item">
+📈 Profit Reinvested
+<br>
+💰 ৳0
+</div>
+
+<div class="history-item">
+💸 Owner Withdrawal
+<br>
+💰 ৳0
+</div>
+
+</div>
+
+</body>
+</html>
